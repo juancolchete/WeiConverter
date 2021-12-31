@@ -2,10 +2,14 @@
   "name": "Wei Converter",
   "description": "A extension to convert wei",
   "version": "1.0",
-  "manifest_version": 3,
+  "manifest_version": 2,
   "icons":{
       "16": "/images/icon16.png",
       "64": "/images/icon64.png",
       "128": "/images/icon128.png"
+  },
+  "browser_action":{
+      "default_icon": "/images/icon16.png",
+      "default_popup": "index.html"
   }
 }
