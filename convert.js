@@ -1,4 +1,6 @@
 var decimal = 18;
+document.getElementById("expo").addEventListener("input", convertToDecimal);
+document.getElementById("result").addEventListener("input", convertFromDecimal);
 function convertToDecimal() {
 	var expo = document.getElementById("expo");
 	var expoValue = expo.value;
