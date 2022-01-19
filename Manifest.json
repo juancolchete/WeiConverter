@@ -10,7 +10,7 @@
   },
   "action": {
     "default_title": "Click Me",  
-    "default_popup": "index.html"
+    "default_popup": "html/index.html"
   },
   "permissions": ["scripting"]
 }
