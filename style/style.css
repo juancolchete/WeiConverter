@@ -6,7 +6,7 @@
 label{
     color: white;
     font-family:monospace;
-    margin-bottom: 100px;
+    
 }
 
 p{
@@ -16,6 +16,10 @@ p{
 a{
     text-decoration: none;
     color: white;
+}
+
+select{
+    width: 185px;
 }
 
 button{
@@ -121,4 +125,12 @@ input[type=number] {
 
 .config{
     background-color: rgba(0, 0, 0, 0);
+}
+
+.configInput{
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    justify-content: space-between;
+    margin-top: 16px;
 }
