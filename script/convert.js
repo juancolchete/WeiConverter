@@ -1,6 +1,12 @@
 var decimal = 18;
+
+
 document.getElementById("expo").addEventListener("input", convertToDecimal);
 document.getElementById("result").addEventListener("input", convertFromDecimal);
+if (localStorage.getItem('conversion') != undefined) {
+	document.getElementById("unit").value = localStorage.getItem('conversion');
+}
+
 function onLoad() {
 	getUnitConversion();
 }
