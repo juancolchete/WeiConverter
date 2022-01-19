@@ -5,6 +5,46 @@
   <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
+  <div class="configGeneral" id="div_config">
+    <div class="container" id="container_config">
+      <script src="js-big-decimal.min.js"></script>
+      <div class="configs">
+          <div class="Shortcut">
+            <label for="">Shortcut 1</label>
+            <input type="text">
+          </div>
+          <div class="Shortcut">
+            <label for="">Shortcut 2</label>
+            <input type="text">
+          </div>
+          <div class="Shortcut">
+            <label for="">Shortcut 3</label>
+            <input type="text">
+          </div>
+          <div class="configInput">
+            <label for="">Select a coin</label>
+            <select name="" id="coin">
+                <option value="EHT">EHT</option>
+                <option value="BSC">BSC</option>
+                <option value="TRX">TRX</option>
+            </select>
+          </div>
+          <div class="configInput">
+            <label for="">Select you unit</label>
+            <select name="" id="unit">
+              <option value="1000000000000000000" selected>Wei</option>
+              <option value="1000000000000000">Kwei (babbage)</option>
+              <option value="1000000000000">Mwei (lovelace)</option>
+              <option value="1000000000">Gwei (shannon)</option>
+              <option value="1000000">Microether (szabo)</option>
+              <option value="1000">Milliether (finney)</option>
+              <option value="1">Ether</option>
+            </select>
+          </div>
+      </div>
+        <button class="config" id="button_config"><img src="../images/settings.png" alt=""></button>
+    </div>
+  </div>
   <div class="general">
     <div class="container">
       <img src="../images/xEtx9RpWSk24kkXaRicP.png" alt="" class="logo">
@@ -21,9 +61,10 @@
     </div>
     <div class="footer">
       <label for="">suport us !!</label>
-      <button class="config"><img src="../images/settings.png" alt=""></button>
+      <button class="config"  id="button_config2"><img src="../images/settings.png" alt=""></button>
     </div>
   </div>
 </body>
 <script src="../script/convert.js"></script>
+<script src="../script/script.js"></script>
 </html>

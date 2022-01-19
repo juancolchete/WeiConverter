@@ -6,7 +6,7 @@
 label{
     color: white;
     font-family:monospace;
-    
+    font-size: 13px;
 }
 
 p{
@@ -61,7 +61,6 @@ input[type=number] {
 .container{
     padding: 20px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
@@ -133,4 +132,23 @@ input[type=number] {
     height: 40px;
     justify-content: space-between;
     margin-top: 16px;
+}
+
+.configGeneral{
+    display: none;
+    position: absolute;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 16%, rgba(70,20,119,1) 100%);
+    width: 250px;
+    height: 350px;
+}
+
+#button_config{
+    position: absolute;
+    top: 312px;
+    left: 205px;
+}
+
+#container_config{
+    margin-left: 10px;
 }
