@@ -1,25 +1,30 @@
 
 getPrice();
 function getPrice() {
-  
+
 
   if (localStorage.getItem('coin') != undefined) {
-    console.log("CoinId: "+ localStorage.getItem('coin'));
     var myHeaders = new Headers();
-    myHeaders.append("access-control-allow-credentials", "*");
-    myHeaders.append("access-control-allow-headers", "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version");
-    myHeaders.append("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, HEAD, OPTIONS");
-    myHeaders.append("access-control-allow-origin", "*");
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append("Access-Control-Allow-Methods", "*");
+    myHeaders.append("Access-Control-Allow-Headers", "*");
+    myHeaders.append("id", localStorage.getItem('coin'));
 
     var requestOptions = {
       method: 'GET',
       headers: myHeaders,
       redirect: 'follow'
     };
-    fetch(`https://coin-market-cap-call.vercel.app/api/cmc?id=${localStorage.getItem('coin')}`, requestOptions)
+
+    fetch("https://coin-market-cap-call.vercel.app/", requestOptions)
       .then(response => response.json())
-      .then((result) => {
-        document.getElementById("price").innerText = "$" + result.data[localStorage.getItem('coin')].quote.USD.price;
+      .then(result => {
+        element = document.getElementById('coin');
+        let symbol = element.options[element.selectedIndex].text;
+        let currentPrice = result.data[localStorage.getItem('coin')].quote.USD.price;
+        let quantity = document.getElementById("result").value
+        let crypto = bigDecimal.multiply(currentPrice, quantity);
+        document.getElementById("price").innerText = `${quantity} ${symbol} = $${Number(crypto).toFixed(2)}`;
       })
       .catch(error => console.log('error', error));
   }

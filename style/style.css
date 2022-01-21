@@ -87,7 +87,7 @@ input[type=number] {
     align-items: center;
     flex-direction: row;
     height: 50px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .footer label{
@@ -102,7 +102,7 @@ input[type=number] {
     height: 30px;
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 13px;
     margin-left: 20px;
     flex-direction: row;
 }
