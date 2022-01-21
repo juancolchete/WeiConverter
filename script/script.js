@@ -1,6 +1,9 @@
 var config = document.getElementById("div_config")
-document.getElementById("button_config").addEventListener("click", changeDisplay)
-document.getElementById("button_config2").addEventListener("click", changeDisplay)
+document.getElementById("button_config").addEventListener("click", changeDisplay);
+document.getElementById("button_config2").addEventListener("click", changeDisplay);
+document.getElementById("coin").addEventListener("change",getCurrency);
+
+document.getElementById("coin").addEventListener("input", saveCurrentCoin);
 document.getElementById("cut1").addEventListener("input", saveShortCut1);
 document.getElementById("cut2").addEventListener("input", saveShortCut2);
 document.getElementById("cut3").addEventListener("input", saveShortCut3);
@@ -9,11 +12,25 @@ document.getElementById("cutBtn1").addEventListener("click", copyShortCut1);
 document.getElementById("cutBtn2").addEventListener("click", copyShortCut2);
 document.getElementById("cutBtn3").addEventListener("click", copyShortCut3);
 
+
+if (localStorage.getItem('coin') != undefined) {
+	document.getElementById("coin").value = localStorage.getItem('coin');
+}
+
+function getCurrency(){
+	if(document.getElementById("coin") != undefined){
+		localStorage.setItem('coin', document.getElementById("coin").value);
+	}
+}
 function changeDisplay(){
-    if(config.style.display == "flex"){
-        config.style.display = "none"
+	if(config.style.display == "flex"){
+		config.style.display = "none"
     }else
-        config.style.display = "flex"
+	config.style.display = "flex"
+}
+function saveCurrentCoin(){
+	localStorage.setItem('coin', document.getElementById("coin").value)
+	getPrice();
 }
 
 function saveShortCut1() {

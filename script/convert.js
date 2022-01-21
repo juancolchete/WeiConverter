@@ -8,6 +8,7 @@ if (localStorage.getItem('conversion') != undefined) {
 }
 
 function onLoad() {
+	getPrice();
 	getUnitConversion();
 }
 function convertToDecimal() {
