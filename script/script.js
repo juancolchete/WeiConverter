@@ -28,9 +28,10 @@ function changeDisplay(){
     }else
 	config.style.display = "flex"
 }
-function saveCurrentCoin(){
-	localStorage.setItem('coin', document.getElementById("coin").value)
-	getPrice();
+async function saveCurrentCoin(){
+	localStorage.setItem('coin', document.getElementById("coin").value);
+	await getCurrentPrice();
+	await getPrice();
 }
 
 function saveShortCut1() {
