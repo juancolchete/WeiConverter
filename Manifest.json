@@ -12,5 +12,5 @@
     "default_title": "Click Me",  
     "default_popup": "html/index.html"
   },
-  "permissions": ["scripting"]
+  "permissions": ["scripting","tabs" ,"idle","identity","identity.email"]
 }
