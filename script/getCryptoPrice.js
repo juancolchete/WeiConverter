@@ -6,7 +6,7 @@ function loadValues(){
 }
 
 function getPrice() {
-    if(localStorage.getItem("currentPrice") != undefined){
+    if(localStorage.getItem("currentPrice") != undefined && localStorage.getItem("isPro") === "true"){
       element = document.getElementById('coin');
       let symbol = element.options[element.selectedIndex].text;
       let quantity = document.getElementById("result").value
@@ -24,7 +24,8 @@ function getPrice() {
 }
 
 async function getCurrentPrice(){
-  if (localStorage.getItem('coin') != undefined) {
+  document.getElementById("user").innerText = localStorage.getItem("isPro");
+  if (localStorage.getItem('coin') != undefined && localStorage.getItem("isPro") === "true") {
     var myHeaders = new Headers();
     myHeaders.append("Access-Control-Allow-Origin", "*");
     myHeaders.append("Access-Control-Allow-Methods", "*");

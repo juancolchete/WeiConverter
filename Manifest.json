@@ -3,14 +3,24 @@
   "description": "A extension to convert wei",
   "version": "1.0",
   "manifest_version": 3,
-  "icons":{
-      "16": "/images/icon16.png",
-      "64": "/images/icon64.png",
-      "128": "/images/icon128.png"
+  "icons": {
+    "16": "/images/icon16.png",
+    "64": "/images/icon64.png",
+    "128": "/images/icon128.png"
   },
   "action": {
-    "default_title": "Click Me",  
+    "default_title": "Click Me",
     "default_popup": "html/index.html"
   },
-  "permissions": ["scripting","tabs" ,"idle","identity","identity.email"]
+  "permissions": [
+    "scripting",
+    "tabs",
+    "idle",
+    "identity",
+    "identity.email"
+  ],
+  "host_permissions": [
+    "https://api.stripe.com/",
+    "*://*/*"
+  ]
 }

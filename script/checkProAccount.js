@@ -1,29 +1,58 @@
+chrome.identity.getProfileUserInfo(function (userInfo) {
+    localStorage.setItem("email", userInfo.email);
+});
+setProAccount();
 async function setProAccount() {
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Basic cmtfdGVzdF81MUtMdldaRXF1djJ6bXcxVERhUHZEM3lRd0pJOUpnNTVKNXUxSHI0N0dnVVFycXNhQ0VsalVTV2h1WlZaRmVFWG5SVWd6SVE3NWk0R25PVTBpVE9FcDhCdzAwamkwSGdZVkc6");
+    try {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer sk_test_51KLvWZEquv2zmw1T597zSyn4rwMIUHspghrct2YSaD2Acbg8kSPrTN7swIRyKPLZ449XKl9K1hvmKJ60vTMU333900KRUltB7w");
 
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-    };
+        var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+        let subscription = {};
+        let response = await fetch(`https://api.stripe.com/v1/customers?email=${localStorage.getItem("email")}`, requestOptions)
+        let customer = await response.json();
+        if (customer.data[0] != undefined) {
+            if (customer.data.length > 0) {
+                response = await fetch(`https://api.stripe.com/v1/subscriptions?customer=${customer.data[0].id}&status=active`, requestOptions)
+                subscription = await response.json();
+            }
+            if (subscription.data != undefined && subscription.data.length > 0) {
+                localStorage.setItem("isPro", true);
+            } else {
+                var requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                    redirect: 'follow'
+                };
+                let PaymentIntent = {}
 
-    fetch("https://api.stripe.com/v1/customers?email=lxcaliente@gmail.com", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer rk_test_51KLvWZEquv2zmw1TDaPvD3yQwJI9Jg55J5u1Hr47GgUQrqsaCEljUSWhuZVZFeEXnRUgzIQ75i4GnOU0iTOEp8Bw00ji0HgYVG");
-
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-    };
-
-    fetch("https://api.stripe.com/v1/subscriptions?customer=cus_L20jNkBU6yjaZt&status=active", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log("Subscribed: " + result.data.length > 0))
-        .catch(error => console.log('error', error));
+                response = await fetch(`https://api.stripe.com/v1/payment_intents?customer=${customer.data[0].id}`, requestOptions)
+                PaymentIntent = await response.json();
+                if (PaymentIntent.data.length > 0 && PaymentIntent.data[0].amount == 2000) {
+                    localStorage.setItem("isPro", true);
+                } else {
+                    disableProFeatures();
+                }
+            }
+        } else {
+            disableProFeatures()
+        }
+    } catch (ex) {
+        console.log(ex)
+    }
+}
+function disableProFeatures() {
+    localStorage.setItem("isPro", false);
+    document.getElementById("cutBtn2").style.display = "none";
+    document.getElementById("cutBtn3").style.display = "none";
+    document.getElementById("cut2").style.display = "none";
+    document.getElementById("cut3").style.display = "none";
+    document.getElementById("lblCut2").style.display = "none";
+    document.getElementById("lblCut3").style.display = "none";
+    document.getElementById("coin").style.display = "none";
+    document.getElementById("lblCoin").style.display = "none";
 }
