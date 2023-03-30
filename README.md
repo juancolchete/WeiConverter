@@ -1,2 +1,2 @@
 # WeiConverter
-Tool to easy cobert wei to ether ether to anything you want
+Tool to easy covert wei to ether ether to anything you want
